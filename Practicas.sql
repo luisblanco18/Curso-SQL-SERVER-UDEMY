@@ -121,3 +121,31 @@ SELECT *
 FROM dbo.tblClientes TC
 LEFT OUTER JOIN dbo.tblVentas TV ON TC.COD_ID = TV.COD_ID
 WHERE TV.ID IS NULL
+
+/*FULL OUTER JOIN*/
+SELECT *
+FROM dbo.tblClientes TC
+FULL OUTER JOIN dbo.tblVentas TV ON TC.COD_ID = TV.COD_ID
+
+/*Cross Apply(Producto Cartesiano)*/
+
+SELECT *
+FROM dbo.tblZonas CROSS APPLY dbo.tblSucursales
+
+/*Union*/
+SELECT *
+FROM (
+		SELECT *
+		FROM dbo.tblProductos TP
+		WHERE TP.COD_LIN='005'
+		UNION ALL
+		SELECT *
+		FROM dbo.tblProductos TP
+		WHERE TP.COD_LIN='006'
+		UNION ALL
+		SELECT *
+		FROM dbo.tblProductos TP
+		WHERE TP.COD_LIN='018'
+		--ORDER BY TP.PRECIO_VTA DESC
+	 )TBLUNION
+ORDER BY TBLUNION.PRECIO_VTA DESC
