@@ -459,3 +459,5 @@ SELECT BusinessEntityID,
 FROM Person.Person P
 WHERE BusinessEntityID = 1
 FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
+
+/*ULTIMO*/
